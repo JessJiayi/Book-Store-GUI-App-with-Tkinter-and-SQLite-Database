@@ -21,17 +21,20 @@ def insert_command():
         lsOutput.insert(END,row)
 
 def get_selected_row(event):
-    global selected_tuple
-    index=lsOutput.curselection()[0]
-    selected_tuple=lsOutput.get(index)
-    eTitle.delete(0,END)
-    eTitle.insert(END,selected_tuple[1])
-    eAuthor.delete(0,END)
-    eAuthor.insert(END,selected_tuple[2])
-    eYear.delete(0,END)
-    eYear.insert(END,selected_tuple[3])
-    eISBN.delete(0,END)
-    eISBN.insert(END,selected_tuple[4])
+    try:
+        global selected_tuple
+        index=lsOutput.curselection()[0]
+        selected_tuple=lsOutput.get(index)
+        eTitle.delete(0,END)
+        eTitle.insert(END,selected_tuple[1])
+        eAuthor.delete(0,END)
+        eAuthor.insert(END,selected_tuple[2])
+        eYear.delete(0,END)
+        eYear.insert(END,selected_tuple[3])
+        eISBN.delete(0,END)
+        eISBN.insert(END,selected_tuple[4])
+    except IndexError:
+        pass
 
 def update_command():
     lsOutput.delete(0,END)
